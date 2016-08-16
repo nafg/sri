@@ -4,6 +4,7 @@ cache:
   - $HOME/.ivy2
   - $HOME/.sbt
 script:
+  - cd relay-web-examples && npm install; cd ..
   - sbt test
 after_success:
   - sbt publish
