@@ -23,18 +23,21 @@ object PublicationDetails {
         else
           Some("releases" at nexus + "service/local/staging/deploy/maven2")
       },
-      pomExtra :=
-        <scm>
-          <connection>scm:git:github.com/chandu0101/sri</connection>
-          <developerConnection>scm:git:git@github.com:chandu0101/sri.git</developerConnection>
-          <url>github.com:chandu0101/sri.git</url>
-        </scm>
-          <developers>
-            <developer>
-              <id>chandu0101</id>
-              <name>Chandra Sekhar Kode</name>
-            </developer>
-          </developers>,
+      scmInfo := Some(
+        ScmInfo(
+          browseUrl = url("https://github.com/chandu0101/sri"),
+          connection = "scm:git:github.com/chandu0101/sri",
+          devConnection = Some("scm:git:git@github.com:chandu0101/sri.git")
+        )
+      ),
+      developers := List(
+        Developer(
+          id = "chandu0101",
+          name = "Chandra Sekhar Kode",
+          email = "chandu.csu2010@gmail.com",
+          url = url("https://github.com/chandu0101")
+        )
+      ),
       scalacOptions += {
         val a = (baseDirectory in LocalRootProject).value.toURI.toString
         val g = "https://raw.githubusercontent.com/chandu0101/sri/" + sys.process.Process("git rev-parse HEAD").lines_!.head
