@@ -16,13 +16,6 @@ object PublicationDetails {
 
   def publicationSettings =
     Seq(
-      publishTo := {
-        val nexus = "https://oss.sonatype.org/"
-        if (isSnapshot.value)
-          Some("snapshots" at nexus + "content/repositories/snapshots")
-        else
-          Some("releases" at nexus + "service/local/staging/deploy/maven2")
-      },
       scmInfo := Some(
         ScmInfo(
           browseUrl = url("https://github.com/chandu0101/sri"),

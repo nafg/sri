@@ -1,0 +1,9 @@
+language: scala
+cache:
+  directories:
+  - $HOME/.ivy2
+  - $HOME/.sbt
+script:
+  - sbt test
+after_success:
+  - sbt publish
