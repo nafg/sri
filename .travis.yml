@@ -1,10 +1,17 @@
 language: scala
+
 cache:
   directories:
   - $HOME/.ivy2
   - $HOME/.sbt
+  - relay-web-examples/node_modules
+
 script:
   - cd relay-web-examples && npm install; cd ..
-  - sbt -J-Xmx3g -v -d "set concurrentRestrictions in Global := Seq(Tags.limitAll(2))" test
-after_success:
-  - sbt publish
+  - sbt -J-Xmx3g "set concurrentRestrictions in Global := Seq(Tags.limitAll(2))" test
+
+deploy:
+  provider: script
+  script: sbt publish
+  on:
+    branch: master
