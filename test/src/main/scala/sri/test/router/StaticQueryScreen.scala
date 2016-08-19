@@ -1,14 +1,14 @@
 package sri.test.router
 
+import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
+import scala.scalajs.js.{JSON, UndefOr => U}
+
 import sri.core.ReactComponent
 import sri.test.components.Text
 import sri.web.all._
 import sri.web.router
-import sri.web.router.{WebRoute, WebRouterComponent}
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
-import scala.scalajs.js.{JSON, UndefOr => U, undefined}
+import sri.web.router.WebRoute
 
 
 object StaticQueryScreen {
@@ -24,9 +24,8 @@ object StaticQueryScreen {
   }
 
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
+  js.constructorOf[Component].contextTypes = router.routerContextTypes
 
-  ctor.contextTypes = router.routerContextTypes
-
-  def apply(route: WebRoute, key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElement(ctor, route, key = key, ref = ref)
+  def apply(route: WebRoute, key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) =
+    makeElement[Component](route, key = key, ref = ref)
 }

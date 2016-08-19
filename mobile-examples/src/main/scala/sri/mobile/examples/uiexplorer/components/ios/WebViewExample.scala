@@ -1,16 +1,14 @@
 package sri.mobile.examples.uiexplorer.components.ios
 
+import scala.scalajs.js.annotation.ScalaJSDefined
+
 import sri.core.ReactComponent
-import sri.mobile.WebViewEvent
 import sri.mobile.all._
-import sri.mobile.components.{WebViewSource, NavigationState, WebView, WebViewM}
-import sri.mobile.examples.uiexplorer.{UIExplorerPageLazyLoad, UIExample, UIExplorerBlock, UIExplorerPage}
-import sri.universal.{TextInputEvent, ReactEvent}
+import sri.mobile.components.{NavigationState, WebView, WebViewM, WebViewSource}
+import sri.mobile.examples.uiexplorer.{UIExample, UIExplorerBlock, UIExplorerPageLazyLoad}
 import sri.universal.components._
 import sri.universal.styles.UniversalStyleSheet
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+import sri.universal.{ReactEvent, TextInputEvent}
 
 object WebViewExample extends UIExample {
 
@@ -107,9 +105,7 @@ object WebViewExample extends UIExample {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  val component = () =>   createElementNoProps(ctor)
+  val component = () => makeElement[Component]
 
   object styles extends UniversalStyleSheet {
 

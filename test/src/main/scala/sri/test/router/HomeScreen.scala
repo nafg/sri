@@ -1,13 +1,11 @@
 package sri.test.router
 
-import sri.test.components.Text
-import sri.universal.components._
-import sri.web.all._
-import sri.web.router.{WebRouterComponent, WebRouterCtrl}
-import sri.web.styles.WebStyleSheet
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
+
+import sri.test.components.Text
+import sri.web.all._
+import sri.web.router.{WebRouterComponent, WebRouterCtrl}
 
 object HomeScreen {
 
@@ -26,11 +24,8 @@ object HomeScreen {
     }
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
+  js.constructorOf[Component].contextTypes = sri.web.router.routerContextTypes
 
-  ctor.contextTypes = sri.web.router.routerContextTypes
-
-  def apply(key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElementNoProps(ctor, key = key, ref = ref)
-
-
+  def apply(key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) =
+    makeElementNoProps[Component](key = key, ref = ref)
 }

@@ -1,14 +1,14 @@
 package sri.mobile.examples.uiexplorer.components.android
 
+import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
+
 import sri.core._
 import sri.mobile.all._
 import sri.mobile.components.android.{SwitchAndroid, ToolbarAndroid, ToolbarAndroidAction, ToolbarAndroidActionShow}
 import sri.mobile.examples.uiexplorer.{UIExample, UIExplorerBlock, UIExplorerPage}
-import sri.universal.components.{ImageSource, Text, View}
+import sri.universal.components.{Text, View}
 import sri.universal.styles.UniversalStyleSheet
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 object ToolbarAndroidExample extends UIExample {
 
@@ -87,10 +87,7 @@ object ToolbarAndroidExample extends UIExample {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  val component = () =>  createElementNoProps(ctor)
-
+  val component = () => makeElement[Component]
 
   object styles extends UniversalStyleSheet {
 

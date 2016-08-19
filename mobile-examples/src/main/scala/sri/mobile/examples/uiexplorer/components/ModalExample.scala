@@ -40,9 +40,8 @@ object ModalExample extends UIExample {
 
     case class Props(onPress: () => Unit, style: js.Dictionary[Any])
 
-    val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-    def apply(onPress: () => Unit, style: js.Dictionary[Any] = js.Dictionary(), key: UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null)(children: ReactNode) = createElementWithChildren(ctor, Props(onPress, style), key = key, ref = ref)(children)
+    def apply(onPress: () => Unit, style: js.Dictionary[Any] = js.Dictionary(), key: UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null)(children: ReactNode) =
+      makeElementWithChildren[Component](Props(onPress, style), key = key, ref = ref)(children)
 
   }
 
@@ -94,10 +93,7 @@ object ModalExample extends UIExample {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  val component = () =>  createElementNoProps(ctor)
-
+  val component = () => makeElement[Component]
 
   object styles extends UniversalStyleSheet {
     val container = style(flexOne,

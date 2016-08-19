@@ -1,12 +1,13 @@
 package sri.test.components
 
+import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
+import scala.scalajs.js.{Function1, undefined, UndefOr => U}
+
 import org.scalajs.dom
 import sri.core._
 import sri.web.all._
 import sri.web.vdom.htmltagsNoInline._
-import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
-import scala.scalajs.js.{UndefOr => U, Function1, undefined => undefined}
 
 
 object RefsTestComponent {
@@ -27,7 +28,6 @@ object RefsTestComponent {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  def apply(key: U[String] = js.undefined, ref: Function1[Component, _] = null) = createElementNoProps(ctor, key = key, ref = ref)
+  def apply(key: U[String] = js.undefined, ref: Function1[Component, Unit] = null) =
+    makeElementNoProps[Component](key = key, ref = ref)
 }

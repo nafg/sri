@@ -29,6 +29,6 @@ object StarWarsShip {
     override val fragments = Fragments("ship" -> (() => js.eval(RelayQL( """fragment on Ship { name }"""))))
   })
 
-  def apply(ship: js.Dynamic, key: U[String] = js.undefined, ref: js.Function1[Component, _] = null) = createRelayElement(container,new Props(ship))
+  def apply(ship: js.Dynamic, key: U[String] = js.undefined, ref: js.Function1[Component, Unit] = null) = createRelayElement(container,new Props(ship))
 
 }

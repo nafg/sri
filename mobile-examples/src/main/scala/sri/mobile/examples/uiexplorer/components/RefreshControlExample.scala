@@ -84,9 +84,7 @@ object RefreshControlExample extends UIExample {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  val component = () =>  createElementNoProps(ctor)
+  val component = () => makeElement[Component]
 
   override def title: String = "RefreshControl"
 

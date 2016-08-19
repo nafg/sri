@@ -1,16 +1,16 @@
 package sri.mobile.examples.uiexplorer.components.ios
 
+import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.UndefOr
+import scala.scalajs.js.annotation.ScalaJSDefined
+
 import sri.core.ElementFactory._
 import sri.core.ReactComponent
 import sri.mobile.components.ios.SegmentedControlIOS
 import sri.mobile.examples.uiexplorer.{UIExample, UIExplorerBlock, UIExplorerPage}
 import sri.universal.components._
 import sri.universal.styles.UniversalStyleSheet
-
-import scala.scalajs.js
-import scala.scalajs.js.Dynamic.{literal => json}
-import scala.scalajs.js.UndefOr
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 
 object SegmentedControlExample extends UIExample {
@@ -96,10 +96,8 @@ object SegmentedControlExample extends UIExample {
       def onValueChange(value: String) = setState(state.copy(value = value))
     }
 
-    val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-    def apply(key: UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElementNoProps(ctor, key = key, ref = ref)
-
+    def apply(key: UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) =
+      makeElementNoProps[Component](key = key, ref = ref)
   }
 
 

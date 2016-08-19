@@ -1,16 +1,15 @@
 package sri.mobile.examples.router.components
 
+import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
+import scala.scalajs.js.{UndefOr => U}
+
 import sri.mobile.ReactNative
 import sri.mobile.all._
-import sri.mobile.apis.android.ToastAndroid
 import sri.universal.components._
 import sri.universal.router
 import sri.universal.router.UniversalRouterComponent
 import sri.universal.styles.UniversalStyleSheet
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
-import scala.scalajs.js.{UndefOr => U, undefined}
 
 
 object RightButton {
@@ -37,10 +36,7 @@ object RightButton {
     val text = style(color := "white")
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
+  js.constructorOf[Component].contextTypes = router.routerContextTypes
 
-  ctor.contextTypes = router.routerContextTypes
-
-  def apply(key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElementNoProps(ctor, key = key, ref = ref)
-
+  def apply(key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) = makeElementNoProps[Component](key = key, ref = ref)
 }

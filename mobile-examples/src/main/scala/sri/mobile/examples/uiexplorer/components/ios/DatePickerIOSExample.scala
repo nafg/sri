@@ -96,9 +96,8 @@ object DatePickerIOSExample extends UIExample {
       }
     }
 
-    val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-    def apply(props: js.Date, key: UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElement(ctor, props)
+    def apply(props: js.Date, key: UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) =
+      makeElement[Component](props)
   }
 
 

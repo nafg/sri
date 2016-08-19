@@ -1,20 +1,17 @@
 package sri.mobile.examples.uiexplorer.components.android
 
-import sri.mobile.ViewPagerAndroidEvent
-import sri.mobile.components.android.{ViewPagerAndroid, ViewPagerAndroidM, SwitchAndroid}
-import sri.mobile.examples.uiexplorer.{UIExample, UIExplorerBlock, UIExplorerPage}
-import sri.universal.ReactEvent
-import sri.universal.styles.UniversalStyleSheet
-import sri.core._
-import sri.universal.components._
-import sri.mobile.all._
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
-import scala.scalajs.js.{UndefOr => U, undefined => undefined}
-
-import scala.scalajs.js
 import scala.scalajs.js.{Function1, UndefOr}
-import scala.scalajs.js.annotation.ScalaJSDefined
+
+import sri.core._
+import sri.mobile.ViewPagerAndroidEvent
+import sri.mobile.all._
+import sri.mobile.components.android.{ViewPagerAndroid, ViewPagerAndroidM}
+import sri.mobile.examples.uiexplorer.UIExample
+import sri.universal.ReactEvent
+import sri.universal.components._
+import sri.universal.styles.UniversalStyleSheet
 
 object ViewPagerAndroidExample extends UIExample {
 
@@ -59,11 +56,7 @@ object ViewPagerAndroidExample extends UIExample {
 
     }
 
-    val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-    def apply(key: UndefOr[String] = js.undefined, ref: Function1[Component, _] = null) = createElementNoProps(ctor, key = key, ref = ref)
-
-
+    def apply(key: UndefOr[String] = js.undefined, ref: Function1[Component, Unit] = null) = makeElementNoProps[Component](key = key, ref = ref)
   }
 
 
@@ -175,10 +168,7 @@ object ViewPagerAndroidExample extends UIExample {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  val component = () =>  createElementNoProps(ctor)
-
+  val component = () => makeElement[Component]
 
   object styles extends UniversalStyleSheet {
 

@@ -1,14 +1,13 @@
 package sri.mobile.examples.uiexplorer
 
+import scala.scalajs.js.annotation.ScalaJSDefined
+
 import sri.core.ElementFactory._
 import sri.core.{ReactComponent, _}
 import sri.mobile.ReactNative
 import sri.mobile.examples.Spinner
 import sri.universal.components._
 import sri.universal.styles.UniversalStyleSheet
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 object UIExplorerPageLazyLoad {
 
@@ -40,8 +39,5 @@ object UIExplorerPageLazyLoad {
     marginTop := 40)
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  def apply(children: ReactNode*) = createElementNoPropsWithChildren(ctor)(children: _*)
-
+  def apply(children: ReactNode*) = makeElementNoPropsWithChildren[Component]()(children: _*)
 }

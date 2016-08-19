@@ -164,9 +164,20 @@ private[core] class InternalReactJSComponent[P <: ReactJSProps, S] extends js.Ob
 
 }
 
+/**
+  * This trait exists so a component's props and state types
+  * can be accessed as type members rather than type parameters
+  */
+@ScalaJSDefined
+trait ReactComponentBase extends js.Any {
+  type Props
+  type State
+}
 
 @ScalaJSDefined
-abstract class ReactComponent[P, S] extends InternalReactComponent[P, S] {
+abstract class ReactComponent[P, S] extends InternalReactComponent[P, S] with ReactComponentBase {
+  type Props = P
+  type State = S
 
   if (js.isUndefined(jsState) || jsState == null) {
     jsState = js.Dictionary[Any]("sstate" -> null).asInstanceOf[JSState[S]]

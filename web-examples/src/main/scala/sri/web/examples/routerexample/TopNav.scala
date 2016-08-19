@@ -1,18 +1,18 @@
 package sri.web.examples.routerexample
 
-import sri.web.all._
+import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.annotation.ScalaJSDefined
+import scala.scalajs.js.{UndefOr => U}
+
 import sri.web
+import sri.web.all._
 import sri.web.examples.Button
 import sri.web.examples.routerexample.WebRouterExample._
 import sri.web.examples.styles.Colors
 import sri.web.router.{WebDynamicPage, WebRouterComponent, WebStaticPage}
 import sri.web.styles.WebStyleSheet
 import sri.web.vdom.htmltags._
-
-import scala.scalajs.js
-import scala.scalajs.js.Dynamic.{literal => json}
-import scala.scalajs.js.annotation.ScalaJSDefined
-import scala.scalajs.js.{UndefOr => U}
 
 
 object TopNav {
@@ -78,12 +78,8 @@ object TopNav {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
+  js.constructorOf[Component].contextTypes = web.router.routerContextTypes
 
-  ctor.contextTypes = web.router.routerContextTypes
-
-
-  def apply(ref: js.UndefOr[String] = "", key: js.Any = {}) = createElementNoProps(ctor)
-
+  def apply(ref: js.UndefOr[String] = "", key: js.Any = {}) = makeElement[Component]
 }
 

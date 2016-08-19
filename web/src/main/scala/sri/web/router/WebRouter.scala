@@ -1,11 +1,10 @@
 package sri.web.router
 
-import org.scalajs.dom
-import sri.core._
-import sri.web.all._
-
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
+
+import sri.core._
+import sri.web.all._
 
 
 sealed trait WebPage
@@ -33,11 +32,10 @@ object WebRouter {
 
     case class Props(ctrl: WebRouterCtrl)
 
-    val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
+    js.constructorOf[Component].childContextTypes = routerContextTypes
 
-    ctor.childContextTypes = routerContextTypes
-
-    def apply(props: RouterState, key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElement(ctor, props, key = key, ref = ref)
+    def apply(props: RouterState, key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) =
+      makeElement[Component](props, key = key, ref = ref)
 
   }
 
@@ -74,9 +72,7 @@ object WebRouter {
 
   case class Props(config: WebRouterConfig)
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  def apply(routerConfig: WebRouterConfig) = createElement(ctor, Props(routerConfig))
+  def apply(routerConfig: WebRouterConfig) = makeElement[Component](Props(routerConfig))
 
 }
 

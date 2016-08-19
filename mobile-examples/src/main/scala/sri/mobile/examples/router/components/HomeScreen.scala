@@ -1,5 +1,9 @@
 package sri.mobile.examples.router.components
 
+import scala.scalajs.js
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.annotation.ScalaJSDefined
+
 import sri.core.ElementFactory._
 import sri.core.ReactElement
 import sri.mobile.examples.router.RouterExampleApp.{Fourth, Second}
@@ -8,10 +12,6 @@ import sri.universal.components._
 import sri.universal.router
 import sri.universal.router.{UniversalRouterComponent, _}
 import sri.universal.styles.UniversalStyleSheet
-
-import scala.scalajs.js
-import scala.scalajs.js.Dynamic.{literal => json}
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 object HomeScreen {
 
@@ -52,11 +52,9 @@ object HomeScreen {
     }
   }
 
+  js.constructorOf[Component].contextTypes = router.routerContextTypes
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-  ctor.contextTypes = router.routerContextTypes
-
-  def apply() = createElementNoProps(ctor)
+  def apply() = makeElement[Component]
 }
 
 object styles extends UniversalStyleSheet {

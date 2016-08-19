@@ -1,13 +1,12 @@
 package sri.mobile.examples.uiexplorer.components.android
 
+import scala.scalajs.js.annotation.ScalaJSDefined
+
 import sri.core.ElementFactory._
 import sri.core._
 import sri.mobile.components.android.SwitchAndroid
 import sri.mobile.examples.uiexplorer.{UIExample, UIExplorerBlock, UIExplorerPage}
 import sri.universal.styles.UniversalStyleSheet
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 
 object SwitchAndroidExample extends UIExample {
 
@@ -33,10 +32,7 @@ object SwitchAndroidExample extends UIExample {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  val component = () =>  createElementNoProps(ctor)
-
+  val component = () => makeElement[Component]
 
   object styles extends UniversalStyleSheet {
 

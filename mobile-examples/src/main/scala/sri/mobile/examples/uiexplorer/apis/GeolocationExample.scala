@@ -1,18 +1,17 @@
 package sri.mobile.examples.uiexplorer.apis
 
-import org.scalajs
-import org.scalajs.dom.window
-import org.scalajs.dom.raw.{PositionOptions, PositionError, Position}
-import sri.core.ReactElement
-import sri.mobile.examples.uiexplorer.UIExample
-import sri.core._
-import sri.universal.components._
-import sri.mobile.all._
-import sri.universal.styles.UniversalStyleSheet
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 import scala.scalajs.js.Dynamic.{literal => json}
-import scala.scalajs.js.{UndefOr => U, JSON, undefined => undefined}
+import scala.scalajs.js.annotation.ScalaJSDefined
+import scala.scalajs.js.{JSON, undefined, UndefOr => U}
+
+import org.scalajs.dom.raw.{Position, PositionError, PositionOptions}
+import org.scalajs.dom.window
+import sri.core._
+import sri.mobile.all._
+import sri.mobile.examples.uiexplorer.UIExample
+import sri.universal.components._
+import sri.universal.styles.UniversalStyleSheet
 
 object GeolocationExample extends UIExample {
 
@@ -65,10 +64,7 @@ object GeolocationExample extends UIExample {
     val title = style(fontWeight._500)
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-
-  override val component = () => createElementNoProps(ctor)
+  override val component = () => makeElement[Component]
 
   override def title: String = "Geolocation"
 

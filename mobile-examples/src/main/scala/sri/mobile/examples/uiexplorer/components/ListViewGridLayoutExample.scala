@@ -1,19 +1,16 @@
 package sri.mobile.examples.uiexplorer.components
 
-import sri.core.ReactComponent
-import sri.mobile.ReactNative
-import sri.mobile.all._
-import sri.mobile.examples.uiexplorer.UIExample
-import sri.universal.apis.LayoutConfig
-import sri.universal.components._
-import sri.universal.styles.UniversalStyleSheet
-
 import scala.scalajs.js
-import scala.scalajs.js.`|`
 import scala.scalajs.js.Dynamic.{literal => json}
 import scala.scalajs.js.JSConverters.genTravConvertible2JSRichGenTrav
-import scala.scalajs.js.UndefOr
+import scala.scalajs.js.`|`
 import scala.scalajs.js.annotation.ScalaJSDefined
+
+import sri.core.ReactComponent
+import sri.mobile.all._
+import sri.mobile.examples.uiexplorer.UIExample
+import sri.universal.components._
+import sri.universal.styles.UniversalStyleSheet
 
 object ListViewGridLayoutExample extends UIExample {
 
@@ -83,9 +80,7 @@ object ListViewGridLayoutExample extends UIExample {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  val component = () => createElementNoProps(ctor)
+  val component = () => makeElement[Component]
 
   object styles extends UniversalStyleSheet {
 

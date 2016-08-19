@@ -55,9 +55,7 @@ object ListViewPagingExample extends UIExample {
       }
     }
 
-    val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-    def apply(key: UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElementNoProps(ctor)
+    def apply(key: UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) = makeElement[Component]
   }
 
 
@@ -149,9 +147,7 @@ object ListViewPagingExample extends UIExample {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  val component = () =>  createElementNoProps(ctor)
+  val component = () => makeElement[Component]
 
   object styles extends UniversalStyleSheet {
 

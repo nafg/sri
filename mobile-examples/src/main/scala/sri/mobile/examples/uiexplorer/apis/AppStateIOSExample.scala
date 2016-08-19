@@ -39,9 +39,8 @@ object AppStateIOSExample extends UIExample {
     }
 
 
-    val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-    def apply(state: Boolean, key: UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElement(ctor, state, key = key, ref = ref)
+    def apply(state: Boolean, key: UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) =
+      makeElement[Component](state, key = key, ref = ref)
 
   }
 
