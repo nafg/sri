@@ -8,7 +8,19 @@ import Dependencies._
 // ================================ Module definitions  ================================ //
 
 lazy val Sri = DefProject(".", "root")
-  .aggregate(core, addons, universal, web, mobile, relay, mobileExamples, webExamples, relayWebExamples, relayMobileExamples)
+  .aggregate(
+   core,
+   addons,
+   universal,
+   web,
+   mobile,
+   relay,
+   mobileExamples,
+   webExamples,
+   relayWebExamples,
+   relayMobileExamples,
+   test
+  )
   .configure(addCommandAliases(
   "ct" -> "; test:compile ; core/test",
   "wt" -> "; test:compile ; web/test",
