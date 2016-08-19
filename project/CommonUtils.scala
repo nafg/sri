@@ -17,9 +17,11 @@ object CommonUtils {
         "-language:higherKinds", "-language:existentials"))
 
 
-  def DefProject(name: String, id: String = "") = {
-    Project(if (id.isEmpty) name else id, file(name))
+  def DefProject(dir: String, _id: String = "") = {
+    val id = if (_id.isEmpty) dir else _id
+    Project(id, file(dir))
       .settings(commonSettings: _*)
+      .settings(Keys.name := "sri-" + id)
       .enablePlugins(ScalaJSPlugin)
   }
 
