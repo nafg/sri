@@ -1,4 +1,3 @@
-import org.scalajs.jsenv.nodejs.NodeJSEnv
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 import sbt.Keys._
 import sbt._
@@ -41,11 +40,15 @@ object Dependencies {
 
   val coreModuleDeps = Seq(
     scalaJSDOM,
-    chandu0101Macros
+    chandu0101Macros,
+    jsDependencies += "org.webjars.bower" % "react" % "15.3.1" / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React"
   )
 
   val webModuleDeps = Seq(
-
+    jsDependencies +=
+      "org.webjars.bower" % "react" % "15.3.1" / "react-dom.js" minified "react-dom.min.js" dependsOn "react-with-addons.js" commonJSName "ReactDOM",
+    jsDependencies +=
+      "org.webjars.npm" % "history" % "3.0.0-2" / "history.js" minified "history.min.js"
   )
 
   val mobileModuleDeps = Seq(
@@ -62,7 +65,7 @@ object Dependencies {
     scalaJSStage in Global := FastOptStage,
 //    scalaJSStage in Global := FullOptStage,
     jsDependencies += RuntimeDOM,
-    jsDependencies += ProvidedJS / "test-bundle.js" % Test,
+//    jsDependencies += ProvidedJS / "test-bundle.js" % Test,
     jsEnv in Test := new PhantomJS2Env(scalaJSPhantomJSClassLoader.value, addArgs = Seq("--web-security=no"))
 //        jsEnv in Test := new NodeJSEnv()
   )

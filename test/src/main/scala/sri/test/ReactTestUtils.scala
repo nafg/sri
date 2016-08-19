@@ -6,6 +6,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSName
 
 @js.native
+@JSName("React.addons.TestUtils")
 object ReactTestUtils  extends js.Object{
 
   val Simulate : js.Dynamic = js.native
