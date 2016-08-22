@@ -211,7 +211,7 @@ abstract class ReactComponent[P, S] extends InternalReactComponent[P, S] with Re
 
   @JSName("sSetStateFunc")
   @inline
-  def setState(func: js.Function2[S, P, S]): Unit = {
+  def setState(func: (S, P) => S): Unit = {
     jsSetState((s: JSState[S], p: JSProps[P]) => JSState[S](func(s.sstate, p.sprops)))
   }
 
