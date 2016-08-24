@@ -1,0 +1,22 @@
+image: 1on1/docker-sbt
+
+cache:
+  paths:
+   - cache
+
+build:
+  variables:
+    COURSIER_CACHE: cache/.coursier
+  artifacts:
+    untracked: true
+  script:
+   - cd relay-web-examples && npm install; cd ..
+   - sbt -J-Xmx3g -sbt-launch-dir cache/.sbt/launchers -sbt-boot cache/.sbt/boot -ivy cache/.ivy2 "set concurrentRestrictions in Global := Seq(Tags.limitAll(2))" test
+
+publish:
+  stage: deploy
+  artifacts:
+    paths:
+      - "*/target/scala-2.11/*.jar"
+  script:
+   - sbt publish
